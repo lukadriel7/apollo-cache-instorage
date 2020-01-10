@@ -95,7 +95,7 @@ jobs:
       - run: tar -xzf dependencies.tar.gz
       - name: Production build
         run: yarn build
-      - run: tar -czf build.tar.gz build
+      - run: tar -czf build.tar.gz dist
       - uses: actions/upload-artifact@v1
         with:
           name: build
