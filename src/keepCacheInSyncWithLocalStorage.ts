@@ -1,4 +1,4 @@
-import { StoreObject } from 'apollo-cache-inmemory'
+import { NormalizedCacheObject, StoreObject } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
 
 import InStorageCache from './InStorageCache'
@@ -13,11 +13,10 @@ import InStorageCache from './InStorageCache'
  * @param {InStorageCache} cache
  * @param {ApolloClient<any>} client This is only needed to trigger a rerender.
  * The actual data is synced in the cache.
- * @param {(cache, dataId: string, newValue: string | null) => void} writer
  */
 export default function keepCacheInSyncWithLocalStorage(
   cache: InStorageCache,
-  client: ApolloClient<{}>,
+  client: ApolloClient<NormalizedCacheObject>,
 ) {
   const { prefix, shouldPersist, storage, denormalize } = cache.persistence
   if (!prefix) {
