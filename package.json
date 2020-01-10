@@ -30,7 +30,7 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.7.4",
-        "@emico/eslint-config": "^1.0.5",
+        "@emico/eslint-config": "^1.0.6",
         "@types/jest": "^24.0.25",
         "@types/traverse": "^0.6.32",
         "apollo-client": "^2.6.8",

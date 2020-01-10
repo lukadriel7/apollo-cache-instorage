@@ -799,10 +799,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@emico/eslint-config@^1.0.5":
-  version "1.0.5"
-  resolved "https://npm-registry.emico.nl/@emico%2feslint-config/-/eslint-config-1.0.5.tgz#182082c5cc45aae7488b8c7ee1798121709a23f9"
-  integrity sha512-ztTHjHdR3suMMrXD3SwFr+VDlkV577925wbLThi855nA3vBvDffdxOvq97OQoJuiD0kfs+lkJXZVQv/8jtbVwA==
+"@emico/eslint-config@^1.0.6":
+  version "1.0.6"
+  resolved "https://npm-registry.emico.nl/@emico%2feslint-config/-/eslint-config-1.0.6.tgz#c2d07b3d09865ea0b4a0274e0636562ec612f048"
+  integrity sha512-RuJu9NjFUNUqSwtc1mEG95EIedtHmcyOFp4nWxY5ht+8l4D7aDFCiMnfPNH0coKmiBbQij+p6D6LiWXfy6XNPA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "2.x"
     "@typescript-eslint/parser" "2.x"
