@@ -52,7 +52,7 @@ describe('ObjectStorageCache', () => {
       value: 'value',
     })
     data.delete('name')
-    expect(data.get('name')).toBe(null)
+    expect(data.get('name')).toBe(undefined)
   })
 
   it('should NOT delete from storage when told so', () => {
