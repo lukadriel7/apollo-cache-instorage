@@ -1,0 +1,102 @@
+name: Build
+
+on: [push, pull_request]
+
+env:
+  CI: true
+  NODE_ENV: production
+
+jobs:
+  prepare:
+    name: 'Install dependencies'
+    runs-on: ubuntu-latest
+    env:
+      YARN_CACHE_FOLDER: .yarn-cache
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: actions/cache@v1
+        with:
+          path: .yarn-cache
+          key: ${{ runner.OS }}-yarn-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-yarn-cache-
+      - run: yarn --frozen-lockfile --production=false
+      - run: tar -czf dependencies.tar.gz node_modules
+      - uses: actions/upload-artifact@v1
+        with:
+          name: dependencies
+          path: dependencies.tar.gz
+
+  # TODO: Update this when possible to include the node_modules folder. GH is updating artifact action soon to make this
+  #  easier (https://github.com/actions/upload-artifact/issues/7#issuecomment-566114993), and cache action multiple path
+  #  support is popular (https://github.com/actions/cache/issues/16)
+
+  typecheck:
+    needs: [prepare]
+    name: 'Typecheck'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: actions/download-artifact@v1
+        with:
+          name: dependencies
+          path: .
+      - run: tar -xzf dependencies.tar.gz
+      - run: yarn typecheck
+  linting:
+    needs: [prepare]
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: actions/download-artifact@v1
+        with:
+          name: dependencies
+          path: .
+      - run: tar -xzf dependencies.tar.gz
+      - run: yarn lint --max-warnings=0
+  test:
+    needs: [prepare]
+    name: 'Test'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: actions/download-artifact@v1
+        with:
+          name: dependencies
+          path: .
+      - run: tar -xzf dependencies.tar.gz
+      - run: yarn test
+  build:
+    needs: [prepare]
+    name: 'Build'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: actions/download-artifact@v1
+        with:
+          name: dependencies
+          path: .
+      - run: tar -xzf dependencies.tar.gz
+      - name: Production build
+        run: yarn build
+      - run: tar -czf build.tar.gz build
+      - uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: build.tar.gz
