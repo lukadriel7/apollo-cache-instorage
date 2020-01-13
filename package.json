@@ -1,6 +1,6 @@
 {
     "name": "@emico/apollo-cache-instorage",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "Apollo Cache implementation that facilitates locally storing resources",
     "author": "Emico and Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
     "license": "MIT",
