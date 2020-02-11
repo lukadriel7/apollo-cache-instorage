@@ -1,8 +1,8 @@
 {
-    "name": "@emico/apollo-cache-instorage",
-    "version": "0.4.2",
+    "name": "@lukadriel/apollo-cache-instorage",
+    "version": "0.4.3",
     "description": "Apollo Cache implementation that facilitates locally storing resources",
-    "author": "Emico and Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
+    "author": "Lukadriel, Emico and Lucas Constantino Silva <lucasconstantinosilva@gmail.com>",
     "license": "MIT",
     "main": "dist/index.js",
     "module": "dist/apollo-cache-instorage.esm.js",
@@ -69,10 +69,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TallerWebSolutions/apollo-cache-instorage.git"
+        "url": "git+https://github.com/Lukadriel7/apollo-cache-instorage.git"
     },
     "bugs": {
-        "url": "https://github.com/TallerWebSolutions/apollo-cache-instorage/issues"
+        "url": "https://github.com/Lukadriel7/apollo-cache-instorage/issues"
     },
-    "homepage": "https://github.com/TallerWebSolutions/apollo-cache-instorage#readme"
+    "homepage": "https://github.com/Lukadriel7/apollo-cache-instorage#readme"
 }
