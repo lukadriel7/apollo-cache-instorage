@@ -30,7 +30,6 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.7.4",
-        "@emico/eslint-config": "^1.0.6",
         "@types/jest": "^24.0.25",
         "@types/traverse": "^0.6.32",
         "apollo-client": "^2.6.8",
@@ -44,12 +43,6 @@
         "typescript": "^3.7.4"
     },
     "peerDependencies": {},
-    "eslint": {
-        "extends": "@emico/eslint-config"
-    },
-    "eslintConfig": {
-        "extends": "@emico/eslint-config"
-    },
     "prettier": {
         "semi": false,
         "singleQuote": true,

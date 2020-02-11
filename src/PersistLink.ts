@@ -73,11 +73,6 @@ export default class PersistLink extends ApolloLink {
       this.directive,
     )
 
-    // Early exit if no persist directive found.
-    if (!paths.length) {
-      return forward ? forward(operation) : null
-    }
-
     // Replace query with one without @persist directives.
     operation.query = query
 
