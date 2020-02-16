@@ -54,10 +54,23 @@ export const toObject = (
 
 export type Normalizer = (value: StoreObject, dataId: string) => string
 export type Denormalizer = (
-  value: string | null,
+  value: string | Promise<any> | null,
   dataId: string,
 ) => StoreObject | undefined
 
 export const normalize: Normalizer = (value, dataId) => JSON.stringify(value)
-export const denormalize: Denormalizer = (value, dataId) =>
-  value !== null ? JSON.parse(value) : undefined
+export const denormalize: Denormalizer = (value, dataId) => {
+  if (value === null) {
+    return undefined
+  } else {
+    if (value instanceof Promise) {
+      value
+        .then(data => {
+          return JSON.parse(data)
+        })
+        .catch(() => null)
+    } else {
+      return JSON.parse(value)
+    }
+  }
+}
